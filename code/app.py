@@ -11,7 +11,7 @@ import plotly.graph_objects as go
 
 import re
 import string
-import sweetviz as sv
+# import sweetviz as sv
 import streamlit as st
 import warnings 
 warnings.filterwarnings('ignore')
@@ -181,22 +181,22 @@ if uploaded_file is not None:
 ##########################################################################################
     # Generate the Sweetviz report
     # Function to generate and cache the Sweetviz report
-    @st.cache_resource
-    def generate_sweetviz_report(df):
-        sweet_report = sv.analyze(df)
-        sweet_report_file = "sweet_report.html"
-        sweet_report.show_html(filepath=sweet_report_file, open_browser=False)
-        return sweet_report_file
+    # @st.cache_resource
+    # def generate_sweetviz_report(df):
+    #     sweet_report = sv.analyze(df)
+    #     sweet_report_file = "sweet_report.html"
+    #     sweet_report.show_html(filepath=sweet_report_file, open_browser=False)
+    #     return sweet_report_file
 
-    # Display the Sweetviz report
-    st.subheader('Sweetviz Report')
-    report_file = generate_sweetviz_report(df)
+    # # Display the Sweetviz report
+    # st.subheader('Sweetviz Report')
+    # report_file = generate_sweetviz_report(df)
 
-    # Read the cached HTML file and display it
-    with open(report_file, 'r') as f:
-        report_html = f.read()
+    # # Read the cached HTML file and display it
+    # with open(report_file, 'r') as f:
+    #     report_html = f.read()
 
-    st.components.v1.html(report_html, width=1500, height=600, scrolling=True)
+    # st.components.v1.html(report_html, width=1500, height=600, scrolling=True)
 
 ########################################################################################
 
