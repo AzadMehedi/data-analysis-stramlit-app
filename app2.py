@@ -181,12 +181,11 @@ with st.container():
 # **🖥️ ডেটা ক্লিনিং steps**
 # columns cleaning
 cleaned_df = df.copy()
-# ডুপ্লিকেট কলাম ড্রপ করা
-cleaned_df = cleaned_df.loc[:, ~cleaned_df.columns.duplicated()]
 cleaned_df.columns = df.columns.str.strip()  # শুরুর ও শেষের স্পেস সরানো
 cleaned_df.columns = df.columns.str.replace(r'^[0-9._/]+|[0-9._/]+$', '', regex=True)  # নাম্বার ও আনওয়ান্টেড ক্যারেক্টার সরানো
 cleaned_df = cleaned_df.dropna()
 cleaned_df = cleaned_df.drop_duplicates()
+cleaned_df = cleaned_df.loc[:, ~cleaned_df.columns.duplicated()]  # ডুপ্লিকেট কলাম ড্রপ করা
 # # নাল (NaN) মান mode value দিয়ে করা
 # df[column] = df[column].fillna(df[column].mode()[0])  # ফিলিং NaN মান মোড দিয়ে
 
@@ -457,6 +456,7 @@ if st.checkbox('👈Show Report'):
     with col2.container():
         st.subheader("📥Clened Dataset")
         st.download_button("💾Download Cleaned Dataset", csv, file_name='cleaned_df.csv', key='dataset')
+
 
 
 
